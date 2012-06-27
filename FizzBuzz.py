@@ -1,18 +1,22 @@
 """
 Q1. Why is the report method untestable ? [2 pts]
 
-
+report_file takes pointer of file , available on local machine- external collaborators
 
 
 Q2. How will you change the api of the report method to make it more testable ? [2 pts]
 
-
+Passing a Filehandlewrapper to report function , so that function should not pick his collaborators.
+We can use -
+a. Filehandlewrapper - a wrapper class defined to have interface function for OPen
+b. fileopener = using argument in report function, Implemented below
 
 """
 class FizzBuzz(object):
-    def report(self, numbers):
+    def report(self, numbers,fileopener=open):
 
-        report_file = open('c:/temp/fizzbuzz_report.txt', 'w')
+        #report_file = Filehandlewrapper.open
+        report_file = fileopener('c:/temp/fizzbuzz_report.txt', 'w')
 
         for number in numbers:
             msg = str(number) + " "
